@@ -34,6 +34,10 @@ public class SecurityConfiguration {
                 authz
                         .requestMatchers(mvc.pattern(HttpMethod.POST, "/api/authenticate")).permitAll()
                         .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/authenticate")).permitAll()
+                        .requestMatchers(mvc.pattern(HttpMethod.PUT, "/api/app-users/**")).permitAll()
+                        .requestMatchers(mvc.pattern(HttpMethod.PATCH, "/api/app-users/**")).permitAll()
+                        .requestMatchers(mvc.pattern(HttpMethod.DELETE, "/api/app-users/**")).permitAll()
+                        .requestMatchers(mvc.pattern(HttpMethod.POST, "/api/app-users")).permitAll()
                         .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/app-users/**")).permitAll()
                         .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/perfils/**")).permitAll()
                         .requestMatchers(mvc.pattern("/api/admin/**")).hasAuthority(AuthoritiesConstants.ADMIN)

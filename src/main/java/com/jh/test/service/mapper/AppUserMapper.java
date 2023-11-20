@@ -14,12 +14,26 @@ import org.mapstruct.Named;
  */
 @Mapper(componentModel = "spring")
 public interface AppUserMapper extends EntityMapper<AppUserDTO, AppUser> {
-    @Mapping(target = "perfil", source = "perfil", qualifiedByName = "perfilId")
-    AppUserDTO toDto(AppUser s);
+    @Mapping(target = "perfil", source = "perfil")
+    AppUserDTO toDto(AppUser appUser);
 
+    @Mapping(target = "perfil", source = "perfil")
+    AppUser toEntity(AppUserDTO appUserDTO);
+
+    // Este método podría no ser necesario si no necesitas convertir solo el ID de
+    // Perfil a PerfilDTO
     @Named("perfilId")
     @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "id", source = "id")
     @Mapping(target = "name", source = "name")
     PerfilDTO toDtoPerfilId(Perfil perfil);
+
+    default AppUser fromId(Long id) {
+        if (id == null) {
+            return null;
+        }
+        AppUser appUser = new AppUser();
+        appUser.setId(id);
+        return appUser;
+    }
 }

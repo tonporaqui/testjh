@@ -1,9 +1,12 @@
 package com.jh.test.service;
 
 import com.jh.test.domain.AppUser;
+import com.jh.test.domain.Perfil;
 import com.jh.test.repository.AppUserRepository;
+import com.jh.test.repository.PerfilRepository;
 import com.jh.test.service.dto.AppUserDTO;
 import com.jh.test.service.mapper.AppUserMapper;
+import com.jh.test.web.rest.errors.BadRequestAlertException;
 import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,9 +28,12 @@ public class AppUserService {
 
     private final AppUserMapper appUserMapper;
 
-    public AppUserService(AppUserRepository appUserRepository, AppUserMapper appUserMapper) {
+    private final PerfilRepository perfilRepository;
+
+    public AppUserService(AppUserRepository appUserRepository, AppUserMapper appUserMapper, PerfilRepository perfilRepository) {
         this.appUserRepository = appUserRepository;
         this.appUserMapper = appUserMapper;
+        this.perfilRepository = perfilRepository;
     }
 
     /**
@@ -39,6 +45,13 @@ public class AppUserService {
     public AppUserDTO save(AppUserDTO appUserDTO) {
         log.debug("Request to save AppUser : {}", appUserDTO);
         AppUser appUser = appUserMapper.toEntity(appUserDTO);
+        // Cargar y asignar el Perfil si es necesario
+        if (appUserDTO.getPerfil() != null && appUserDTO.getPerfil().getId() != null) {
+            Perfil perfil = perfilRepository
+                .findById(appUserDTO.getPerfil().getId())
+                .orElseThrow(() -> new BadRequestAlertException("Perfil no encontrado", "perfil", "idnotfound"));
+            appUser.setPerfil(perfil);
+        }
         appUser = appUserRepository.save(appUser);
         return appUserMapper.toDto(appUser);
     }
@@ -52,6 +65,15 @@ public class AppUserService {
     public AppUserDTO update(AppUserDTO appUserDTO) {
         log.debug("Request to update AppUser : {}", appUserDTO);
         AppUser appUser = appUserMapper.toEntity(appUserDTO);
+
+        // Cargar y asignar el Perfil si es necesario
+        if (appUserDTO.getPerfil() != null && appUserDTO.getPerfil().getId() != null) {
+            Perfil perfil = perfilRepository
+                .findById(appUserDTO.getPerfil().getId())
+                .orElseThrow(() -> new BadRequestAlertException("Perfil no encontrado", "perfil", "idnotfound"));
+            appUser.setPerfil(perfil);
+        }
+
         appUser = appUserRepository.save(appUser);
         return appUserMapper.toDto(appUser);
     }
@@ -69,6 +91,14 @@ public class AppUserService {
             .findById(appUserDTO.getId())
             .map(existingAppUser -> {
                 appUserMapper.partialUpdate(existingAppUser, appUserDTO);
+
+                // Si el DTO contiene un perfil y tiene un ID, se asocia con el usuario
+                if (appUserDTO.getPerfil() != null && appUserDTO.getPerfil().getId() != null) {
+                    Perfil perfil = perfilRepository
+                        .findById(appUserDTO.getPerfil().getId())
+                        .orElseThrow(() -> new BadRequestAlertException("Perfil no encontrado", "perfil", "idnotfound"));
+                    existingAppUser.setPerfil(perfil);
+                }
 
                 return existingAppUser;
             })
