@@ -150,11 +150,6 @@ public class PerfilResource {
         @org.springdoc.core.annotations.ParameterObject Pageable pageable,
         @RequestParam(required = false) String filter
     ) {
-        if ("user-is-null".equals(filter)) {
-            log.debug("REST request to get all Perfils where user is null");
-            return new ResponseEntity<>(perfilService.findAllWhereUserIsNull(), HttpStatus.OK);
-        }
-
         if ("appuser-is-null".equals(filter)) {
             log.debug("REST request to get all Perfils where appUser is null");
             return new ResponseEntity<>(perfilService.findAllWhereAppUserIsNull(), HttpStatus.OK);

@@ -9,7 +9,8 @@ import org.springframework.boot.info.BuildProperties;
 import org.springframework.boot.info.GitProperties;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.interceptor.KeyGenerator;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import tech.jhipster.config.JHipsterProperties;
 import tech.jhipster.config.cache.PrefixedKeyGenerator;
 
@@ -34,9 +35,8 @@ public class CacheConfiguration {
     @Bean
     public JCacheManagerCustomizer cacheManagerCustomizer() {
         return cm -> {
-            createCache(cm, com.jh.test.domain.User.class.getName());
-            createCache(cm, com.jh.test.domain.Perfil.class.getName());
             createCache(cm, com.jh.test.domain.AppUser.class.getName());
+            createCache(cm, com.jh.test.domain.Perfil.class.getName());
             // jhipster-needle-caffeine-add-entry
         };
     }

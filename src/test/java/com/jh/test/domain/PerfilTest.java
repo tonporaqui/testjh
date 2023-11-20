@@ -2,7 +2,6 @@ package com.jh.test.domain;
 
 import static com.jh.test.domain.AppUserTestSamples.*;
 import static com.jh.test.domain.PerfilTestSamples.*;
-import static com.jh.test.domain.UserTestSamples.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.jh.test.web.rest.TestUtil;
@@ -22,20 +21,6 @@ class PerfilTest {
 
         perfil2 = getPerfilSample2();
         assertThat(perfil1).isNotEqualTo(perfil2);
-    }
-
-    @Test
-    void userTest() throws Exception {
-        Perfil perfil = getPerfilRandomSampleGenerator();
-        User userBack = getUserRandomSampleGenerator();
-
-        perfil.setUser(userBack);
-        assertThat(perfil.getUser()).isEqualTo(userBack);
-        assertThat(userBack.getPerfil()).isEqualTo(perfil);
-
-        perfil.user(null);
-        assertThat(perfil.getUser()).isNull();
-        assertThat(userBack.getPerfil()).isNull();
     }
 
     @Test

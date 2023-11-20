@@ -31,7 +31,7 @@ public class AppUser implements Serializable {
     @Column(name = "lastname", length = 255, nullable = false)
     private String lastname;
 
-    @JsonIgnoreProperties(value = { "user", "appUser" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "appUser" }, allowSetters = true)
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(unique = true)
     private Perfil perfil;

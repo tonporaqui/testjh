@@ -93,20 +93,6 @@ public class PerfilService {
     }
 
     /**
-     *  Get all the perfils where User is {@code null}.
-     *  @return the list of entities.
-     */
-    @Transactional(readOnly = true)
-    public List<PerfilDTO> findAllWhereUserIsNull() {
-        log.debug("Request to get all perfils where User is null");
-        return StreamSupport
-            .stream(perfilRepository.findAll().spliterator(), false)
-            .filter(perfil -> perfil.getUser() == null)
-            .map(perfilMapper::toDto)
-            .collect(Collectors.toCollection(LinkedList::new));
-    }
-
-    /**
      *  Get all the perfils where AppUser is {@code null}.
      *  @return the list of entities.
      */

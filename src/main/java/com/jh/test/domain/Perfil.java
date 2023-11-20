@@ -28,10 +28,6 @@ public class Perfil implements Serializable {
 
     @JsonIgnoreProperties(value = { "perfil" }, allowSetters = true)
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "perfil")
-    private User user;
-
-    @JsonIgnoreProperties(value = { "perfil" }, allowSetters = true)
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "perfil")
     private AppUser appUser;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
@@ -60,25 +56,6 @@ public class Perfil implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public User getUser() {
-        return this.user;
-    }
-
-    public void setUser(User user) {
-        if (this.user != null) {
-            this.user.setPerfil(null);
-        }
-        if (user != null) {
-            user.setPerfil(this);
-        }
-        this.user = user;
-    }
-
-    public Perfil user(User user) {
-        this.setUser(user);
-        return this;
     }
 
     public AppUser getAppUser() {
