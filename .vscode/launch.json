@@ -1,0 +1,15 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-TestjhApp<testjh>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "mainClass": "com.jh.test.TestjhApp",
+      "projectName": "testjh",
+      "args": "--spring.profiles.active=prod",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
