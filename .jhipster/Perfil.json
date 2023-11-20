@@ -1,0 +1,22 @@
+{
+  "applications": "*",
+  "changelogDate": "20231120000748",
+  "clientRootFolder": "testjh",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "entityTableName": "perfil",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    }
+  ],
+  "microserviceName": "testjh",
+  "name": "Perfil",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

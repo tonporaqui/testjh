@@ -1,0 +1,16 @@
+entity AppUser {
+    name String required maxlength(255)
+    lastname String required maxlength(255)
+}
+
+entity Perfil {
+    name String required maxlength(255)
+}
+
+relationship OneToOne {
+    AppUser{perfil} to Perfil
+}
+
+dto AppUser, Perfil with mapstruct
+service AppUser, Perfil with serviceClass
+paginate AppUser, Perfil with pagination

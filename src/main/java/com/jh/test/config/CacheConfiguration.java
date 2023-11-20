@@ -34,6 +34,9 @@ public class CacheConfiguration {
     @Bean
     public JCacheManagerCustomizer cacheManagerCustomizer() {
         return cm -> {
+            createCache(cm, com.jh.test.domain.User.class.getName());
+            createCache(cm, com.jh.test.domain.Perfil.class.getName());
+            createCache(cm, com.jh.test.domain.AppUser.class.getName());
             // jhipster-needle-caffeine-add-entry
         };
     }
