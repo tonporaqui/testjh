@@ -17,7 +17,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -142,18 +141,10 @@ public class PerfilResource {
      * {@code GET  /perfils} : get all the perfils.
      *
      * @param pageable the pagination information.
-     * @param filter the filter of the request.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of perfils in body.
      */
     @GetMapping("")
-    public ResponseEntity<List<PerfilDTO>> getAllPerfils(
-        @org.springdoc.core.annotations.ParameterObject Pageable pageable,
-        @RequestParam(required = false) String filter
-    ) {
-        if ("appuser-is-null".equals(filter)) {
-            log.debug("REST request to get all Perfils where appUser is null");
-            return new ResponseEntity<>(perfilService.findAllWhereAppUserIsNull(), HttpStatus.OK);
-        }
+    public ResponseEntity<List<PerfilDTO>> getAllPerfils(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
         log.debug("REST request to get a page of Perfils");
         Page<PerfilDTO> page = perfilService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);

@@ -4,11 +4,7 @@ import com.jh.test.domain.Perfil;
 import com.jh.test.repository.PerfilRepository;
 import com.jh.test.service.dto.PerfilDTO;
 import com.jh.test.service.mapper.PerfilMapper;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -90,20 +86,6 @@ public class PerfilService {
     public Page<PerfilDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Perfils");
         return perfilRepository.findAll(pageable).map(perfilMapper::toDto);
-    }
-
-    /**
-     *  Get all the perfils where AppUser is {@code null}.
-     *  @return the list of entities.
-     */
-    @Transactional(readOnly = true)
-    public List<PerfilDTO> findAllWhereAppUserIsNull() {
-        log.debug("Request to get all perfils where AppUser is null");
-        return StreamSupport
-            .stream(perfilRepository.findAll().spliterator(), false)
-            .filter(perfil -> perfil.getAppUser() == null)
-            .map(perfilMapper::toDto)
-            .collect(Collectors.toCollection(LinkedList::new));
     }
 
     /**

@@ -7,7 +7,7 @@ entity Perfil {
     name String required maxlength(255)
 }
 
-relationship OneToOne {
+relationship ManyToOne {
     AppUser{perfil} to Perfil
 }
 

@@ -1,6 +1,5 @@
 package com.jh.test.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
@@ -25,10 +24,6 @@ public class Perfil implements Serializable {
     @Size(max = 255)
     @Column(name = "name", length = 255, nullable = false)
     private String name;
-
-    @JsonIgnoreProperties(value = { "perfil" }, allowSetters = true)
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "perfil")
-    private AppUser appUser;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -56,25 +51,6 @@ public class Perfil implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public AppUser getAppUser() {
-        return this.appUser;
-    }
-
-    public void setAppUser(AppUser appUser) {
-        if (this.appUser != null) {
-            this.appUser.setPerfil(null);
-        }
-        if (appUser != null) {
-            appUser.setPerfil(this);
-        }
-        this.appUser = appUser;
-    }
-
-    public Perfil appUser(AppUser appUser) {
-        this.setAppUser(appUser);
-        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

@@ -1,6 +1,5 @@
 package com.jh.test.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
@@ -31,9 +30,7 @@ public class AppUser implements Serializable {
     @Column(name = "lastname", length = 255, nullable = false)
     private String lastname;
 
-    @JsonIgnoreProperties(value = { "appUser" }, allowSetters = true)
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(unique = true)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Perfil perfil;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
