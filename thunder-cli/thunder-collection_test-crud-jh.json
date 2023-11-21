@@ -1,94 +1,108 @@
 {
-  "client": "Thunder Client",
-  "collectionName": "test-crud-jh",
-  "dateExported": "2023-11-20T18:49:21.779Z",
-  "version": "1.1",
-  "folders": [],
-  "requests": [
-    {
-      "_id": "783b3fb6-f074-4601-914d-6aa11119161e",
-      "colId": "ada9f4c5-1233-4749-a582-07aa237f80ec",
-      "containerId": "",
-      "name": "getAllUser",
-      "url": "http://localhost:8081/api/app-users",
-      "method": "GET",
-      "sortNum": 10000,
-      "created": "2023-11-20T13:52:19.879Z",
-      "modified": "2023-11-20T15:14:52.069Z",
-      "headers": [],
-      "params": [],
-      "tests": []
-    },
-    {
-      "_id": "500fbbe6-e373-493f-ada9-5c64051f04a2",
-      "colId": "ada9f4c5-1233-4749-a582-07aa237f80ec",
-      "containerId": "",
-      "name": "createAppUser",
-      "url": "http://localhost:8081/api/app-users",
-      "method": "POST",
-      "sortNum": 20000,
-      "created": "2023-11-20T17:49:38.359Z",
-      "modified": "2023-11-20T18:24:53.883Z",
-      "headers": [],
-      "params": [],
-      "body": {
-        "type": "json",
-        "raw": "{\r\n  \"name\": \"Veamos\",\r\n  \"lastname\": \"si funca aun\",\r\n  \"perfil\": {\r\n    \"id\": 2\r\n  }\r\n}\r\n",
-        "form": []
-      },
-      "tests": []
-    },
-    {
-      "_id": "86160316-5d08-42d3-b9a3-dec448015792",
-      "colId": "ada9f4c5-1233-4749-a582-07aa237f80ec",
-      "containerId": "",
-      "name": "updateAppUser",
-      "url": "http://localhost:8081/api/app-users/1001",
-      "method": "PUT",
-      "sortNum": 30000,
-      "created": "2023-11-20T18:06:27.396Z",
-      "modified": "2023-11-20T18:16:31.721Z",
-      "headers": [],
-      "params": [],
-      "body": {
-        "type": "json",
-        "raw": "{\r\n  \"id\": 1001,\r\n  \"name\": \"Otro\",\r\n  \"lastname\": \"Dato\",\r\n  \"perfil\": {\r\n    \"id\": 2\r\n  }\r\n}",
-        "form": []
-      },
-      "tests": []
-    },
-    {
-      "_id": "2ea0b356-01c6-486a-9022-7556a6d34738",
-      "colId": "ada9f4c5-1233-4749-a582-07aa237f80ec",
-      "containerId": "",
-      "name": "partialUpdateAppUser",
-      "url": "http://localhost:8081/api/app-users/1051",
-      "method": "PATCH",
-      "sortNum": 40000,
-      "created": "2023-11-20T18:42:35.232Z",
-      "modified": "2023-11-20T18:44:50.267Z",
-      "headers": [],
-      "params": [],
-      "body": {
-        "type": "json",
-        "raw": "{\r\n  \"id\": 1051,\r\n  \"lastname\": \"wakanda\"\r\n}",
-        "form": []
-      },
-      "tests": []
-    },
-    {
-      "_id": "41163178-1e4e-4389-bc19-f381a0864853",
-      "colId": "ada9f4c5-1233-4749-a582-07aa237f80ec",
-      "containerId": "",
-      "name": "deleteAppUser",
-      "url": "http://localhost:8081/api/app-users/2",
-      "method": "DELETE",
-      "sortNum": 50000,
-      "created": "2023-11-20T18:47:24.393Z",
-      "modified": "2023-11-20T18:48:07.499Z",
-      "headers": [],
-      "params": [],
-      "tests": []
-    }
-  ]
+    "client": "Thunder Client",
+    "collectionName": "test-crud-jh",
+    "dateExported": "2023-11-21T16:10:06.960Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "2888bb10-1368-4fff-bb5e-8a2373130cad",
+            "colId": "4917e5f1-e953-4723-bb69-f1de38270df3",
+            "containerId": "",
+            "name": "getAllUser",
+            "url": "http://localhost:8081/api/app-users",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-11-21T16:00:54.948Z",
+            "modified": "2023-11-21T16:00:54.948Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "f25e66cb-19b8-47b8-aca4-c19ffd049e02",
+            "colId": "4917e5f1-e953-4723-bb69-f1de38270df3",
+            "containerId": "",
+            "name": "createAppUser",
+            "url": "http://localhost:8081/api/app-users",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-11-21T16:00:54.949Z",
+            "modified": "2023-11-21T16:00:54.949Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n  \"name\": \"Veamos\",\r\n  \"lastname\": \"si funca aun\",\r\n  \"perfil\": {\r\n    \"id\": 2\r\n  }\r\n}\r\n",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "0866f367-582b-4ad6-bc35-6a4b60901959",
+            "colId": "4917e5f1-e953-4723-bb69-f1de38270df3",
+            "containerId": "",
+            "name": "updateAppUser",
+            "url": "http://localhost:8081/api/app-users/1001",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2023-11-21T16:00:54.950Z",
+            "modified": "2023-11-21T16:00:54.950Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n  \"id\": 1001,\r\n  \"name\": \"Otro\",\r\n  \"lastname\": \"Dato\",\r\n  \"perfil\": {\r\n    \"id\": 2\r\n  }\r\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "c5c46034-2455-4e97-9ba3-b93594ef96c7",
+            "colId": "4917e5f1-e953-4723-bb69-f1de38270df3",
+            "containerId": "",
+            "name": "partialUpdateAppUser",
+            "url": "http://localhost:8081/api/app-users/1051",
+            "method": "PATCH",
+            "sortNum": 40000,
+            "created": "2023-11-21T16:00:54.951Z",
+            "modified": "2023-11-21T16:00:54.951Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n  \"id\": 1051,\r\n  \"lastname\": \"wakanda\"\r\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "16610f8a-af93-4c91-9260-413b475d9937",
+            "colId": "4917e5f1-e953-4723-bb69-f1de38270df3",
+            "containerId": "",
+            "name": "deleteAppUser",
+            "url": "http://localhost:8081/api/app-users/2",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2023-11-21T16:00:54.952Z",
+            "modified": "2023-11-21T16:00:54.952Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "cab82473-0420-41db-bf7a-8423397c23a6",
+            "colId": "4917e5f1-e953-4723-bb69-f1de38270df3",
+            "containerId": "",
+            "name": "getAllPerfils",
+            "url": "http://localhost:8081/api/perfils",
+            "method": "GET",
+            "sortNum": 60000,
+            "created": "2023-11-21T16:08:43.267Z",
+            "modified": "2023-11-21T16:09:54.088Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
 }
