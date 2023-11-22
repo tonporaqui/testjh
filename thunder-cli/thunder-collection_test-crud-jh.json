@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "test-crud-jh",
-    "dateExported": "2023-11-21T16:10:06.960Z",
+    "dateExported": "2023-11-22T16:10:27.406Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -100,6 +100,20 @@
             "sortNum": 60000,
             "created": "2023-11-21T16:08:43.267Z",
             "modified": "2023-11-21T16:09:54.088Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "c1bedb2c-5933-489a-9029-1455d97968ec",
+            "colId": "4917e5f1-e953-4723-bb69-f1de38270df3",
+            "containerId": "",
+            "name": "getAppUserById",
+            "url": "http://localhost:8081/api/app-users/1101",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2023-11-22T16:07:57.416Z",
+            "modified": "2023-11-22T16:08:46.229Z",
             "headers": [],
             "params": [],
             "tests": []

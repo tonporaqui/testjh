@@ -1,13 +1,14 @@
 package com.jh.test.service.mapper;
 
-import com.jh.test.domain.AppUser;
-import com.jh.test.domain.Perfil;
-import com.jh.test.service.dto.AppUserDTO;
-import com.jh.test.service.dto.PerfilDTO;
 import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
+
+import com.jh.test.domain.AppUser;
+import com.jh.test.domain.Perfil;
+import com.jh.test.service.dto.AppUserDTO;
+import com.jh.test.service.dto.PerfilDTO;
 
 /**
  * Mapper for the entity {@link AppUser} and its DTO {@link AppUserDTO}.
