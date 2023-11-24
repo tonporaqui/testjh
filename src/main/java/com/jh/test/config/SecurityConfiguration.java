@@ -1,10 +1,9 @@
 package com.jh.test.config;
 
-import java.beans.Customizer;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -45,7 +44,11 @@ public class SecurityConfiguration {
                         .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/app-users/**")).permitAll()
                         .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/perfils/**")).permitAll()
                         .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/report/**")).permitAll()
-                        .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/animales/**")).permitAll()
+                        .requestMatchers(mvc.pattern(HttpMethod.POST, "/api/animals/**")).permitAll()
+                        .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/animals/**")).permitAll()
+                        .requestMatchers(mvc.pattern(HttpMethod.PUT, "/api/animals/**")).permitAll()
+                        .requestMatchers(mvc.pattern(HttpMethod.PATCH, "/api/animals/**")).permitAll()
+                        .requestMatchers(mvc.pattern(HttpMethod.DELETE, "/api/animals/**")).permitAll()
                         .requestMatchers(mvc.pattern("/api/admin/**")).hasAuthority(AuthoritiesConstants.ADMIN)
                         .requestMatchers(mvc.pattern("/api/**")).authenticated()
                         .requestMatchers(mvc.pattern("/v3/api-docs/**")).hasAuthority(AuthoritiesConstants.ADMIN)

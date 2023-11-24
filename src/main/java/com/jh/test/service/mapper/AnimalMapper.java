@@ -1,12 +1,17 @@
 package com.jh.test.service.mapper;
 
-import com.jh.test.domain.Animal;
-import com.jh.test.service.dto.AnimalDTO;
 import java.util.List;
+
 import org.mapstruct.Mapper;
 
+import com.jh.test.domain.Animal;
+import com.jh.test.service.dto.AnimalDTO;
+
+/**
+ * Mapper for the entity {@link Animal} and its DTO {@link AnimalDTO}.
+ */
 @Mapper(componentModel = "spring")
-public interface AnimalMapper {
+public interface AnimalMapper extends EntityMapper<AnimalDTO, Animal> {
     Animal toEntity(AnimalDTO animalDTO);
 
     AnimalDTO toDto(Animal animal);
