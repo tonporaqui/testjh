@@ -45,6 +45,9 @@ spring:
     hikari:
       poolName: Hikari
       auto-commit: false
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/jhtestmongo
   # Replace by 'prod, faker' to add the faker context and have sample data loaded in production
   liquibase:
     contexts: prod
@@ -86,10 +89,10 @@ server:
 
 jhipster:
   cors:
-    allowed-origins: "http://localhost:3000"
-    allowed-methods: "*"
-    allowed-headers: "*"
-    exposed-headers: "Authorization,Link,X-Total-Count"
+    allowed-origins: 'http://localhost:3000'
+    allowed-methods: '*'
+    allowed-headers: '*'
+    exposed-headers: 'Authorization,Link,X-Total-Count'
     allow-credentials: true
     max-age: 1800
   http:
