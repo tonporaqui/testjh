@@ -5,7 +5,9 @@
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Prueba_LOCAL_pg"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<queryString>
-		<![CDATA[]]>
+		<![CDATA[select au.id, au."name", au.lastname, p."name" as perfil_name from app_user as au
+inner join perfil as p
+on au.perfil_id = p.id]]>
 	</queryString>
 	<field name="id" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.name" value="id"/>
@@ -22,9 +24,9 @@
 		<property name="com.jaspersoft.studio.field.label" value="lastname"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="app_user"/>
 	</field>
-	<field name="perfil" class="com.jh.test.service.dto.PerfilDTO">
-		<property name="com.jaspersoft.studio.field.name" value="perfil"/>
-		<property name="com.jaspersoft.studio.field.label" value="peril"/>
+	<field name="perfil_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="perfil_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="perfil_name"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="perfil"/>
 	</field>
 	<background>
@@ -132,7 +134,7 @@
 					<pen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{perfil}.getName()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{perfil_name}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

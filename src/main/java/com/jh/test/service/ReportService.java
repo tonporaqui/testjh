@@ -6,18 +6,24 @@ import java.io.FileInputStream;
 import java.sql.Connection;
 import java.util.Base64;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.sql.DataSource;
 
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
+
+import com.jh.test.service.dto.AppUserDTO;
 
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.export.ooxml.JRDocxExporter;
 import net.sf.jasperreports.engine.export.ooxml.JRXlsxExporter;
 import net.sf.jasperreports.export.SimpleDocxReportConfiguration;
@@ -34,6 +40,7 @@ import net.sf.jasperreports.export.SimpleXlsxReportConfiguration;
 public class ReportService {
 
     private final DataSource dataSource;
+    private final AppUserService appUserService;
 
     /**
      * Constructor for ReportService.
@@ -41,8 +48,9 @@ public class ReportService {
      *
      * @param dataSource the data source for database connection.
      */
-    public ReportService(DataSource dataSource) {
+    public ReportService(DataSource dataSource, AppUserService appUserService) {
         this.dataSource = dataSource;
+        this.appUserService = appUserService;
     }
 
     /**
@@ -54,12 +62,16 @@ public class ReportService {
      * @throws Exception if there is an error during report generation.
      */
     public String generatePdfReport() throws Exception {
+
+        Pageable pageable = PageRequest.of(0, Integer.MAX_VALUE);
+        List<AppUserDTO> appUserDTOs = appUserService.findAll(pageable).getContent();
         File file = ResourceUtils.getFile("classpath:reports/list_user.jrxml");
         JasperReport jasperReport = JasperCompileManager.compileReport(new FileInputStream(file));
         Map<String, Object> parameters = new HashMap<>();
 
         try (Connection connection = dataSource.getConnection()) {
-            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, connection);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters,
+                    new JRBeanCollectionDataSource(appUserDTOs));
             byte[] pdfContent = JasperExportManager.exportReportToPdf(jasperPrint);
             return Base64.getEncoder().encodeToString(pdfContent);
         }
@@ -74,7 +86,7 @@ public class ReportService {
      * @throws Exception if there is an error during report generation.
      */
     public String generateExcelReport() throws Exception {
-        File file = ResourceUtils.getFile("classpath:reports/list_user.jrxml");
+        File file = ResourceUtils.getFile("classpath:reports/list_user_query.jrxml");
         JasperReport jasperReport = JasperCompileManager.compileReport(new FileInputStream(file));
         Map<String, Object> parameters = new HashMap<>();
 
@@ -105,7 +117,7 @@ public class ReportService {
      * @throws Exception if there is an error during report generation.
      */
     public String generateWordReport() throws Exception {
-        File file = ResourceUtils.getFile("classpath:reports/list_user.jrxml");
+        File file = ResourceUtils.getFile("classpath:reports/list_user_query.jrxml");
         JasperReport jasperReport = JasperCompileManager.compileReport(new FileInputStream(file));
         Map<String, Object> parameters = new HashMap<>();
 
