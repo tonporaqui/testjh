@@ -62,7 +62,6 @@ public class ReportService {
      * @throws Exception if there is an error during report generation.
      */
     public String generatePdfReport() throws Exception {
-
         Pageable pageable = PageRequest.of(0, Integer.MAX_VALUE);
         List<AppUserDTO> appUserDTOs = appUserService.findAll(pageable).getContent();
         File file = ResourceUtils.getFile("classpath:reports/list_user.jrxml");
@@ -86,12 +85,15 @@ public class ReportService {
      * @throws Exception if there is an error during report generation.
      */
     public String generateExcelReport() throws Exception {
-        File file = ResourceUtils.getFile("classpath:reports/list_user_query.jrxml");
+        Pageable pageable = PageRequest.of(0, Integer.MAX_VALUE);
+        List<AppUserDTO> appUserDTOs = appUserService.findAll(pageable).getContent();
+        File file = ResourceUtils.getFile("classpath:reports/list_user.jrxml");
         JasperReport jasperReport = JasperCompileManager.compileReport(new FileInputStream(file));
         Map<String, Object> parameters = new HashMap<>();
 
         try (Connection connection = dataSource.getConnection()) {
-            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, connection);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters,
+                    new JRBeanCollectionDataSource(appUserDTOs));
 
             JRXlsxExporter exporter = new JRXlsxExporter();
             ByteArrayOutputStream os = new ByteArrayOutputStream();
