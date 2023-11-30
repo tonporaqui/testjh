@@ -82,7 +82,15 @@ public class ReportService {
             SimplePdfExporterConfiguration configuration = new SimplePdfExporterConfiguration();
             configuration.setEncrypted(true);
             configuration.set128BitKey(true);
-            configuration.setUserPassword("1234"); // Contraseña del usuario
+
+            // formatos permitodos de rut
+            // 12.345.678-9
+            // 123456789
+            // 12345678-9
+
+            String userPassword = getLastDigitsOfRut("123456789", 5);
+            System.out.println(userPassword);
+            configuration.setUserPassword(userPassword); // Contraseña del usuario
             configuration.setOwnerPassword("ownerPassword"); // Contraseña del propietario
 
             exporter.setConfiguration(configuration);
@@ -154,6 +162,27 @@ public class ReportService {
 
             exporter.exportReport();
             return Base64.getEncoder().encodeToString(os.toByteArray());
+        }
+    }
+
+    /**
+     * Método para obtener los últimos dígitos del cuerpo del RUT.
+     * 
+     * @param rut        El RUT en formato chileno.
+     * @param digitCount La cantidad de dígitos a extraer.
+     * @return Los últimos 'digitCount' dígitos del cuerpo del RUT.
+     */
+    public static String getLastDigitsOfRut(String rut, int digitCount) {
+        // Limpiar el RUT para conservar solo dígitos
+        String cleanRut = rut.replaceAll("\\D+", "");
+
+        // Asegurarse de que el RUT tenga suficiente longitud
+        if (cleanRut.length() <= digitCount) {
+            // Devolver el RUT completo (sin el dígito verificador) si es demasiado corto
+            return cleanRut.substring(0, cleanRut.length() - 1);
+        } else {
+            // Devolver los últimos 'digitCount' dígitos del cuerpo del RUT
+            return cleanRut.substring(cleanRut.length() - digitCount - 1, cleanRut.length() - 1);
         }
     }
 }
