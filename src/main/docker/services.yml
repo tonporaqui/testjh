@@ -5,3 +5,7 @@ services:
     extends:
       file: ./postgresql.yml
       service: postgresql
+  keycloak:
+    extends:
+      file: ./keycloak.yml
+      service: keycloak

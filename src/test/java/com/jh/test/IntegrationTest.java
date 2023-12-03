@@ -2,6 +2,7 @@ package com.jh.test;
 
 import com.jh.test.config.AsyncSyncConfiguration;
 import com.jh.test.config.EmbeddedSQL;
+import com.jh.test.config.TestSecurityConfiguration;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -14,7 +15,7 @@ import org.springframework.test.annotation.DirtiesContext;
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@SpringBootTest(classes = { TestjhApp.class, AsyncSyncConfiguration.class })
+@SpringBootTest(classes = { TestjhApp.class, AsyncSyncConfiguration.class, TestSecurityConfiguration.class })
 @EmbeddedSQL
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 public @interface IntegrationTest {

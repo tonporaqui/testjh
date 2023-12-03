@@ -1,0 +1,61 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="ton (generated)" id="1701630206566-4">
+        <addColumn tableName="app_user">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="ton (generated)" id="1701630206566-5">
+        <addColumn tableName="perfil">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="ton (generated)" id="1701630206566-6">
+        <addColumn tableName="app_user">
+            <column name="lastname" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="ton (generated)" id="1701630206566-7">
+        <addColumn tableName="app_user">
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="ton (generated)" id="1701630206566-8">
+        <addColumn tableName="perfil">
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="ton (generated)" id="1701630206566-9">
+        <addColumn tableName="app_user">
+            <column name="perfil_id" type="bigint"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="ton (generated)" id="1701630206566-10">
+        <addPrimaryKey columnNames="id" constraintName="app_userPK" tableName="app_user"/>
+    </changeSet>
+    <changeSet author="ton (generated)" id="1701630206566-11">
+        <addPrimaryKey columnNames="id" constraintName="perfilPK" tableName="perfil"/>
+    </changeSet>
+    <changeSet author="ton (generated)" id="1701630206566-12">
+        <addForeignKeyConstraint baseColumnNames="perfil_id" baseTableName="app_user" constraintName="FK47xuoq6qp5t5xiwsam5fwyvyp" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="perfil" validate="true"/>
+    </changeSet>
+    <changeSet author="ton (generated)" id="1701630206566-1">
+        <modifyDataType columnName="email" newDataType="varchar(254)" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="ton (generated)" id="1701630206566-2">
+        <modifyDataType columnName="id" newDataType="varchar(255)" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="ton (generated)" id="1701630206566-3">
+        <modifyDataType columnName="user_id" newDataType="varchar(255)" tableName="jhi_user_authority"/>
+    </changeSet>
+</databaseChangeLog>

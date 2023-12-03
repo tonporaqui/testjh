@@ -1,0 +1,21 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="ton (generated)" id="1701644764320-4">
+        <addForeignKeyConstraint baseColumnNames="perfil_id" baseTableName="app_user" constraintName="FK47xuoq6qp5t5xiwsam5fwyvyp" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="perfil" validate="true"/>
+    </changeSet>
+    <changeSet author="ton (generated)" id="1701644764320-5">
+        <dropSequence sequenceName="app_user_id_seq"/>
+    </changeSet>
+    <changeSet author="ton (generated)" id="1701644764320-6">
+        <dropSequence sequenceName="sequence_generator"/>
+    </changeSet>
+    <changeSet author="ton (generated)" id="1701644764320-1">
+        <modifyDataType columnName="email" newDataType="varchar(254)" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="ton (generated)" id="1701644764320-2">
+        <modifyDataType columnName="id" newDataType="varchar(255)" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="ton (generated)" id="1701644764320-3">
+        <modifyDataType columnName="user_id" newDataType="varchar(255)" tableName="jhi_user_authority"/>
+    </changeSet>
+</databaseChangeLog>

@@ -15,7 +15,7 @@
 
 logging:
   level:
-    ROOT: DEBUG
+    ROOT: INFO
     tech.jhipster: DEBUG
     org.hibernate.SQL: DEBUG
     com.jh.test: DEBUG
@@ -29,6 +29,21 @@ management:
       probability: 1.0 # report 100% of traces
 
 spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          oidc:
+            issuer-uri: http://localhost:8080/realms/testjhipsteroauth2
+            # localhost will be bound to the guest (container), not the host
+            # to run Keycloak as a daemon, i.e., npm run docker:keycloak:up, /etc/hosts must be edited
+            # and the issuer-uri should be as follows:
+            # issuer-uri: http://keycloak:9080/auth/realms/jhipster
+        registration:
+          oidc:
+            client-id: jhipster-app
+            client-secret: xHqImxDSdAFAYFifIjVrzmFz6HBZSpRy
+            scope: openid,profile,email
   devtools:
     restart:
       enabled: true
@@ -46,8 +61,14 @@ spring:
     hikari:
       poolName: Hikari
       auto-commit: false
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/test
+  # Replace by 'prod, faker' to add the faker context and have sample data loaded in production
   liquibase:
     # Remove 'faker' if you do not want the sample data to be loaded automatically
+    # desactivando liquibase con enabled: false
+    enabled: false
     contexts: dev, faker
   messages:
     cache-duration: PT1S # 1 second, see the ISO 8601 standard
@@ -64,6 +85,13 @@ server:
 # ===================================================================
 
 jhipster:
+  cors:
+    allowed-origins: 'http://localhost:3000'
+    allowed-methods: '*'
+    allowed-headers: '*'
+    exposed-headers: 'Authorization,Link,X-Total-Count'
+    allow-credentials: true
+    max-age: 1800
   cache: # Cache configuration
     caffeine: # Caffeine configuration
       time-to-live-seconds: 3600 # By default objects stay 1 hour in the cache. This sets expireAfterWrite in Caffeine (https://github.com/ben-manes/caffeine/wiki/Eviction#time-based)
@@ -77,14 +105,6 @@ jhipster:
   #   exposed-headers: "Authorization,Link,X-Total-Count"
   #   allow-credentials: true
   #   max-age: 1800
-  security:
-    authentication:
-      jwt:
-        # This token must be encoded using Base64 and be at least 256 bits long (you can type `openssl rand -base64 64` on your command line to generate a 512 bits one)
-        base64-secret: ZjQ4YWQ4YzljMWQxY2IzYjdhZDNjYTEwOWM4YmY1MmM3N2U5YTNkNTZkZjRjNDIzNzczNmQxYjcwMWZjZDhhYTQ3MWRjNzBjZTkzYWE5YzdjYzc1NjljYmJkMTM1MzE0MDdmZWM1NDhkMTEwODQwMWE0NTAxYWY1OGRiYmM0ZDM=
-        # Token is valid 24 hours
-        token-validity-in-seconds: 86400
-        token-validity-in-seconds-for-remember-me: 2592000
   logging:
     use-json-format: false # By default, logs are not in Json format
     logstash: # Forward logs to logstash over a socket, used by LoggingConfiguration
