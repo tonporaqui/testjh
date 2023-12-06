@@ -1,44 +1,50 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
-// https://github.com/microsoft/vscode-dev-containers/tree/v0.209.6/containers/java
 {
   "name": "Testjh",
-  "build": {
-    "dockerfile": "Dockerfile",
-    "args": {
-      // Update the VARIANT arg to pick a Java version: 17, 19
-      // Append -bullseye or -buster to pin to an OS version.
-      // Use the -bullseye variants on local arm64/Apple Silicon.
-      "VARIANT": "17-bullseye",
-      // Options
-      // maven and gradle wrappers are used by default, we don't need them installed globally
-      // "INSTALL_MAVEN": "true",
-      // "INSTALL_GRADLE": "false",
-      "NODE_VERSION": "18.18.2"
-    }
-  },
-
   "customizations": {
     "vscode": {
-      // Set *default* container specific settings.json values on container create.
       "settings": {
         "java.jdt.ls.java.home": "/docker-java-home"
       },
-
-      // Add the IDs of extensions you want installed when the container is created.
-      "extensions": ["vscjava.vscode-java-pack", "pivotal.vscode-boot-dev-pack", "esbenp.prettier-vscode"]
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "pivotal.vscode-boot-dev-pack",
+        "esbenp.prettier-vscode",
+        "redhat.java",
+        "vscjava.vscode-spring-initializr",
+        "vscjava.vscode-spring-boot-dashboard",
+        "ms-vscode-remote.remote-containers",
+        "usernamehw.errorlens",
+        "mhutchie.git-graph",
+        "vscjava.vscode-gradle",
+        "jhipster-ide.jdl",
+        "aykutsarac.jsoncrack-vscode",
+        "yzhang.markdown-all-in-one",
+        "hbrok.markdown-preview-bitbucket",
+        "pkief.material-icon-theme",
+        "whizkydee.material-palenight-theme",
+        "quicktype.quicktype",
+        "christian-kohler.path-intellisense",
+        "cweijan.vscode-postgresql-client2",
+        "ms-vscode.powershell",
+        "voldemortensen.rainbow-tags",
+        "rangav.vscode-thunder-client",
+        "redhat.vscode-xml",
+        "dotjoshjohnson.xml",
+        "ms-azuretools.vscode-docker",
+        "redhat.fabric8-analytics",
+        "vmware.vscode-boot-dev-pack",
+        "sonalsithara.spring-code-generator"
+      ]
     }
-  },
-
-  // Use 'forwardPorts' to make a list of ports inside the container available locally.
-  "forwardPorts": [8081],
-
-  // Use 'postCreateCommand' to run commands after the container is created.
-  // "postCreateCommand": "java -version",
-
-  // Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-  "remoteUser": "vscode",
-  "features": {
-    "docker-in-docker": "latest",
-    "docker-from-docker": "latest"
   }
+  // "build": {
+  //   "dockerfile": "Dockerfile",
+  //   ...
+  // },
+  // "forwardPorts": [8081],
+  // "remoteUser": "vscode",
+  // "features": {
+  //   "docker-in-docker": "latest",
+  //   "docker-from-docker": "latest"
+  // }
 }

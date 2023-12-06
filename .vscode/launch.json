@@ -8,7 +8,7 @@
       "console": "integratedTerminal",
       "mainClass": "com.jh.test.TestjhApp",
       "projectName": "testjh",
-      "args": "--spring.profiles.active=prod",
+      "args": "--spring.profiles.active=dev",
       "envFile": "${workspaceFolder}/.env"
     }
   ]
