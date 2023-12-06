@@ -61,6 +61,7 @@ public class SecurityConfiguration {
                         .requestMatchers(mvc.pattern(HttpMethod.PUT, "/api/animals/**")).permitAll()
                         .requestMatchers(mvc.pattern(HttpMethod.PATCH, "/api/animals/**")).permitAll()
                         .requestMatchers(mvc.pattern(HttpMethod.DELETE, "/api/animals/**")).permitAll()
+                        .requestMatchers(mvc.pattern(HttpMethod.POST, "/api/login/**")).permitAll()
                         .requestMatchers(mvc.pattern("/api/admin/**")).hasAuthority(AuthoritiesConstants.ADMIN)
                         .requestMatchers(mvc.pattern("/api/**")).authenticated()
                         .requestMatchers(mvc.pattern("/v3/api-docs/**")).hasAuthority(AuthoritiesConstants.ADMIN)
