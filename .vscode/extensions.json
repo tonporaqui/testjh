@@ -1,0 +1,30 @@
+{
+  "recommendations": [
+    "vscjava.vscode-java-pack",
+    "pivotal.vscode-boot-dev-pack",
+    "esbenp.prettier-vscode",
+    "redhat.java",
+    "ms-vscode-remote.remote-containers",
+    "usernamehw.errorlens",
+    "mhutchie.git-graph",
+    "vscjava.vscode-gradle",
+    "jhipster-ide.jdl",
+    "aykutsarac.jsoncrack-vscode",
+    "yzhang.markdown-all-in-one",
+    "hbrok.markdown-preview-bitbucket",
+    "pkief.material-icon-theme",
+    "whizkydee.material-palenight-theme",
+    "quicktype.quicktype",
+    "christian-kohler.path-intellisense",
+    "cweijan.vscode-postgresql-client2",
+    "ms-vscode.powershell",
+    "voldemortensen.rainbow-tags",
+    "rangav.vscode-thunder-client",
+    "redhat.vscode-xml",
+    "dotjoshjohnson.xml",
+    "ms-azuretools.vscode-docker",
+    "redhat.fabric8-analytics",
+    "vmware.vscode-boot-dev-pack",
+    "sonalsithara.spring-code-generator"
+  ]
+}
