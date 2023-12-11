@@ -42,7 +42,7 @@ spring:
         registration:
           oidc:
             client-id: jhipster-app
-            client-secret: xHqImxDSdAFAYFifIjVrzmFz6HBZSpRy
+            client-secret: 8RVyLVrnZfTX2ReN6jQVCHBmC17olZeR
             scope: openid,profile,email
   devtools:
     restart:

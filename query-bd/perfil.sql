@@ -1,7 +1,7 @@
--- Table: public.perfil
+-- Crear secuencia para perfil
+CREATE SEQUENCE IF NOT EXISTS perfil_id_seq;
 
--- DROP TABLE IF EXISTS public.perfil;
-
+-- Crear tabla perfil
 CREATE TABLE IF NOT EXISTS PUBLIC.PERFIL (
     ID BIGINT NOT NULL DEFAULT NEXTVAL('perfil_id_seq'::REGCLASS),
     NAME CHARACTER VARYING(255) COLLATE PG_CATALOG."default" NOT NULL,

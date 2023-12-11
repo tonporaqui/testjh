@@ -1,7 +1,7 @@
--- Table: public.app_user
+-- Crear secuencia para app_user
+CREATE SEQUENCE IF NOT EXISTS app_user_id_seq;
 
--- DROP TABLE IF EXISTS public.app_user;
-
+-- Crear tabla app_user
 CREATE TABLE IF NOT EXISTS PUBLIC.APP_USER (
     ID BIGINT NOT NULL DEFAULT NEXTVAL('app_user_id_seq'::REGCLASS),
     NAME CHARACTER VARYING(255) COLLATE PG_CATALOG."default" NOT NULL,
